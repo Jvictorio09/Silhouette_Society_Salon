@@ -25,11 +25,13 @@ SECRET_KEY = 'django-insecure-z+-4p476noel!+!^h1-1q5v#f9)^y_y^0h@=9w7qhj0!2qtrty
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'silhouettesocietysalon-production.up.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'silhouettesocietysalon-production.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost',
     'http://localhost:8000',
+    'http://127.0.0.1',
+    'http://127.0.0.1:8000',
     'https://silhouettesocietysalon-production.up.railway.app',
 ]
 
