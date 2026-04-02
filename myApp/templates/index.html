@@ -3,544 +3,542 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noura's Magic Touch — Luxury Massage & Wellness</title>
+<title>Noura's Magic Touch — Home Wellness Therapy · Abu Dhabi</title>
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dcuswyfur/image/upload/v1775160092/Beige_Aesthetic_Minimalist_Beauty_Logo_kpizzo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Primary display uses Higuen Elegant Serif (with elegant serif fallback), secondary uses Alata. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alata&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --cream: #FAF6F0;
-    --blush: #E8C9B0;
-    --sand: #D4A882;
-    --taupe: #8B6F5A;
-    --deep: #3D2B1F;
-    --sage: #A8B5A0;
-    --gold: #C9A96E;
-    --white: #FFFDF9;
-  }
+/* ════════════════════════════════
+   BRAND PALETTE
+   Beige      #D4CAB9  — page background
+   Olive      #5C6E5C  — primary text, CTAs
+   Plum       #73607B  — accents, highlights
+   Lavender   #B0A3B4  — soft sections / card tints
+   Sage       #A0AFA0  — secondary accents
+   
+   White      #FAF8F4  — card surfaces
+   ════════════════════════════════ */
+:root {
+  --beige:     #D4CAB9;
+  --beige-lt:  #E8E2D8;
+  --beige-dk:  #C0B5A2;
+  --olive:     #5C6E5C;
+  --olive-dk:  #3F4E3F;
+  --plum:      #73607B;
+  --plum-lt:   #9B8AA5;
+  --plum-pale: #EAE4EE;
+  --lavender:  #B0A3B4;
+  --lav-pale:  #F0EDF3;
+  --sage:      #A0AFA0;
+  --sage-dk:   #7A8F7A;
+  --white:     #FAF8F4;
+  --deep:      #2C2330;
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  --font-display: 'Higuen Elegant Serif', 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Alata', sans-serif;
+}
 
-  html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--cream);
-    color: var(--deep);
-    overflow-x: hidden;
-  }
+body {
+  font-family: var(--font-body);
+  background: var(--beige);
+  color: var(--olive-dk);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 60px;
-    background: rgba(250,246,240,0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,169,110,0.15);
-    transition: padding 0.3s ease;
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-weight: 400; letter-spacing: 0.04em;
-    color: var(--deep); text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe);
-    text-decoration: none; transition: color 0.25s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--deep); color: var(--cream) !important;
-    padding: 9px 22px; border-radius: 2px; letter-spacing: 0.14em;
-    transition: background 0.25s !important;
-  }
-  .nav-cta:hover { background: var(--gold) !important; color: var(--deep) !important; }
+/* ── FLOATING WHATSAPP ── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+  text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
+}
+.wa-float:hover { transform: scale(1.07); box-shadow: 0 12px 40px rgba(37,211,102,0.5); }
+.wa-float svg { width: 30px; height: 30px; fill: currentColor; display: block; }
 
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    position: relative; overflow: hidden;
-  }
-  .hero-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 140px 70px 80px 80px;
-    position: relative; z-index: 2;
-  }
-  .hero-eyebrow {
-    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold);
-    display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
-  }
-  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.2rem, 5.5vw, 5rem);
-    font-weight: 300; line-height: 1.12;
-    color: var(--deep); margin-bottom: 28px;
-  }
-  .hero-title em { font-style: italic; color: var(--taupe); }
-  .hero-subtitle {
-    font-size: 0.97rem; font-weight: 300; line-height: 1.8;
-    color: var(--taupe); max-width: 420px; margin-bottom: 48px;
-  }
-  .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--deep); color: var(--cream);
-    padding: 15px 36px; font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
-    border-radius: 2px; border: none; cursor: pointer;
-    transition: all 0.3s ease; display: inline-block;
-    box-shadow: 0 8px 32px rgba(61,43,31,0.18);
-  }
-  .btn-primary:hover { background: var(--gold); color: var(--deep); transform: translateY(-2px); }
-  .btn-ghost {
-    color: var(--taupe); font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-    transition: color 0.25s;
-  }
-  .btn-ghost:hover { color: var(--gold); }
-  .btn-ghost::after { content: '→'; font-size: 1rem; }
+/* ── NAV (dark bar — white logo reads clearly) ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 64px;
+  background: linear-gradient(180deg, rgba(44, 35, 48, 0.98) 0%, rgba(36, 30, 42, 0.97) 100%);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(250, 248, 244, 0.1);
+  box-shadow: 0 8px 32px rgba(44, 35, 48, 0.25);
+  transition: padding 0.3s;
+}
+.nav-logo { text-decoration: none; display: flex; align-items: center; line-height: 0; }
+.nav-logo img {
+  height: 88px; width: auto;
+  max-width: min(360px, 58vw);
+  object-fit: contain; display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+}
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: var(--font-body); font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(250, 248, 244, 0.88); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--lavender); }
+.nav-cta {
+  background: var(--beige-lt) !important; color: var(--olive-dk) !important;
+  padding: 10px 24px; border-radius: 2px; transition: background 0.25s, color 0.25s !important;
+}
+.nav-cta:hover { background: var(--white) !important; color: var(--plum) !important; }
 
-  .hero-stats {
-    display: flex; gap: 40px; margin-top: 56px;
-    padding-top: 32px; border-top: 1px solid rgba(201,169,110,0.2);
-  }
-  .stat { display: flex; flex-direction: column; gap: 4px; }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 300; color: var(--deep);
-  }
-  .stat-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 54% 46%;
+  position: relative; overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 72px 80px 80px;
+  background: var(--beige-lt);
+  position: relative; z-index: 2;
+}
+/* subtle grain */
+.hero-left::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+.hero-left > * { position: relative; z-index: 1; }
 
-  .hero-right {
-    position: relative; overflow: hidden;
-  }
-  .hero-img {
-    width: 100%; height: 100%; object-fit: cover;
-    display: block;
-  }
-  /* placeholder for hero image */
-  .hero-img-placeholder {
-    width: 100%; height: 100%; min-height: 100vh;
-    background: linear-gradient(135deg, #D4A882 0%, #E8C9B0 40%, #C9A96E 100%);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 14px;
-  }
-  .placeholder-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; color: rgba(61,43,31,0.45); letter-spacing: 0.1em;
-    text-align: center;
-  }
-  .placeholder-icon { font-size: 3rem; opacity: 0.3; }
-  .hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to right, rgba(250,246,240,0.15) 0%, transparent 50%);
-    z-index: 1;
-  }
-  .hero-badge {
-    position: absolute; bottom: 48px; left: -20px; z-index: 3;
-    background: var(--white); padding: 20px 28px;
-    box-shadow: 0 12px 48px rgba(61,43,31,0.12);
-    border-left: 3px solid var(--gold);
-    animation: floatUp 0.8s ease 0.6s both;
-  }
-  .hero-badge-label { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-  .hero-badge-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem; font-weight: 400; color: var(--deep); margin-top: 2px;
-  }
+.hero-location {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.68rem; font-weight: 400; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--plum); margin-bottom: 24px;
+}
+.hero-location::before { content: ''; width: 28px; height: 1px; background: var(--plum); }
 
-  @keyframes floatUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+h1.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.9rem, 4.6vw, 4.6rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--olive-dk); margin-bottom: 22px;
+}
+h1.hero-title em { font-style: italic; color: var(--plum); }
 
-  /* ─── SECTION COMMONS ─── */
-  section { position: relative; }
-  .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
-  .section-tag {
-    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--gold);
-    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
-  }
-  .section-tag::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.4rem, 4vw, 3.6rem);
-    font-weight: 300; line-height: 1.15; color: var(--deep);
-  }
-  .section-title em { font-style: italic; color: var(--taupe); }
+.hero-sub {
+  font-size: 0.93rem; line-height: 1.85; color: var(--olive);
+  max-width: 430px; margin-bottom: 44px;
+}
+.hero-sub strong { color: var(--olive-dk); font-weight: 400; }
 
-  /* ─── TREATMENTS / MARQUEE ─── */
-  .marquee-band {
-    background: var(--deep); padding: 18px 0; overflow: hidden;
-  }
-  .marquee-track {
-    display: flex; gap: 0; white-space: nowrap;
-    animation: marquee 24s linear infinite;
-  }
-  .marquee-item {
-    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--blush); padding: 0 40px;
-    display: flex; align-items: center; gap: 20px;
-  }
-  .marquee-item::after { content: '✦'; color: var(--gold); font-size: 0.6rem; }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+.hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
-  /* ─── ABOUT / PHILOSOPHY ─── */
-  .philosophy { padding: 120px 0; }
-  .philosophy-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-  }
-  .philosophy-img-wrap { position: relative; }
-  .philosophy-img {
-    width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
-  }
-  .philosophy-img-placeholder {
-    width: 100%; aspect-ratio: 3/4;
-    background: linear-gradient(160deg, #E8C9B0 0%, #D4A882 60%, #C9A96E 100%);
-    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px;
-  }
-  .img-accent {
-    position: absolute; bottom: -20px; right: -20px;
-    width: 160px; height: 160px;
-    border: 2px solid var(--gold); z-index: -1;
-  }
-  .philosophy-content { padding-right: 20px; }
-  .philosophy-body {
-    font-size: 1rem; line-height: 1.9; color: var(--taupe);
-    margin: 28px 0 40px;
-  }
-  .philosophy-body strong { color: var(--deep); font-weight: 400; }
-  .signature {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; font-style: italic; color: var(--gold);
-  }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--olive); color: var(--white);
+  padding: 15px 32px; border-radius: 2px; text-decoration: none;
+  font-family: var(--font-body); font-size: 0.74rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer;
+  transition: all 0.3s; box-shadow: 0 6px 28px rgba(92,110,92,0.3);
+}
+.btn-primary:hover { background: var(--plum); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(115,96,123,0.3); }
+.btn-primary svg { width: 17px; height: 17px; fill: currentColor; }
 
-  /* ─── SERVICES ─── */
-  .services { padding: 120px 0; background: var(--deep); }
-  .services .section-title { color: var(--cream); }
-  .services .section-tag { color: var(--gold); }
-  .services .section-tag::before { background: var(--gold); }
-  .services-header { margin-bottom: 70px; }
-  .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-  }
-  .service-card {
-    background: rgba(255,253,249,0.04);
-    border: 1px solid rgba(201,169,110,0.12);
-    padding: 44px 36px;
-    position: relative; overflow: hidden;
-    transition: background 0.3s, transform 0.3s;
-    cursor: pointer;
-  }
-  .service-card:hover {
-    background: rgba(201,169,110,0.08);
-    transform: translateY(-4px);
-  }
-  .service-card::before {
-    content: ''; position: absolute; top: 0; left: 0;
-    width: 100%; height: 2px; background: var(--gold);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-  .service-card:hover::before { transform: scaleX(1); }
-  .service-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.85rem; color: var(--gold); letter-spacing: 0.1em;
-    margin-bottom: 24px; opacity: 0.7;
-  }
-  .service-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.55rem; font-weight: 300; color: var(--cream);
-    line-height: 1.2; margin-bottom: 14px;
-  }
-  .service-desc {
-    font-size: 0.83rem; line-height: 1.8; color: rgba(232,201,176,0.65);
-    margin-bottom: 28px;
-  }
-  .service-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem; color: var(--gold); font-style: italic;
-  }
-  .service-price span { font-size: 0.72rem; font-family: 'Jost', sans-serif; font-style: normal; letter-spacing: 0.1em; opacity: 0.7; }
+.btn-ghost {
+  color: var(--olive); font-family: var(--font-body); font-size: 0.74rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+  display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--plum); }
+.btn-ghost::after { content: '↓'; font-size: 1rem; }
 
-  /* ─── MENU / PRICING ─── */
-  .pricing { padding: 120px 0; }
-  .pricing-header { text-align: center; margin-bottom: 72px; }
-  .pricing-header .section-tag { justify-content: center; }
-  .pricing-tabs {
-    display: flex; justify-content: center; gap: 8px;
-    flex-wrap: wrap; margin-top: 32px;
-  }
-  .tab-btn {
-    padding: 10px 24px; font-size: 0.75rem; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    border: 1px solid rgba(139,111,90,0.3); background: transparent;
-    color: var(--taupe); cursor: pointer; border-radius: 2px;
-    transition: all 0.25s;
-  }
-  .tab-btn.active, .tab-btn:hover {
-    background: var(--deep); color: var(--cream); border-color: var(--deep);
-  }
-  .pricing-panel { display: none; }
-  .pricing-panel.active { display: block; }
-  .pricing-card {
-    max-width: 760px; margin: 0 auto;
-    background: var(--white);
-    box-shadow: 0 20px 60px rgba(61,43,31,0.08);
-    overflow: hidden;
-  }
-  .pricing-card-header {
-    background: var(--deep); padding: 40px 48px;
-    text-align: center;
-  }
-  .pricing-card-header h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem; font-weight: 300; color: var(--cream);
-    margin-bottom: 8px;
-  }
-  .pricing-card-header p { font-size: 0.8rem; color: var(--blush); letter-spacing: 0.08em; }
-  .pricing-card-body { padding: 48px; }
-  .pricing-duration {
-    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--gold); font-weight: 500; margin-bottom: 18px; margin-top: 32px;
-  }
-  .pricing-duration:first-child { margin-top: 0; }
-  .pricing-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 0; border-bottom: 1px solid rgba(139,111,90,0.1);
-  }
-  .pricing-row:last-child { border-bottom: none; }
-  .pricing-session { font-size: 0.88rem; color: var(--taupe); }
-  .pricing-amount {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem; color: var(--deep); font-weight: 400;
-  }
-  .pricing-badge {
-    background: rgba(201,169,110,0.12); color: var(--gold);
-    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 3px 10px; border-radius: 2px; margin-left: 10px;
-    vertical-align: middle;
-  }
-  .pricing-cta { text-align: center; padding: 36px 48px; background: var(--cream); }
-  .pricing-cta p { font-size: 0.82rem; color: var(--taupe); margin-bottom: 20px; }
+.hero-stats {
+  display: flex; gap: 40px; margin-top: 52px;
+  padding-top: 28px; border-top: 1px solid rgba(115,96,123,0.18);
+}
+.stat { display: flex; flex-direction: column; gap: 3px; }
+.stat-n {
+  font-family: var(--font-display);
+  font-size: 2.1rem; font-weight: 300; line-height: 1; color: var(--plum);
+}
+.stat-l { font-size: 0.67rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); }
 
-  /* ─── EXPERIENCE ─── */
-  .experience { padding: 120px 0; background: var(--blush); }
-  .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 64px; }
-  .exp-card { text-align: center; padding: 44px 28px; background: var(--white); }
-  .exp-icon { font-size: 2rem; margin-bottom: 20px; }
-  .exp-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-weight: 400; color: var(--deep);
-    margin-bottom: 14px;
-  }
-  .exp-body { font-size: 0.85rem; line-height: 1.8; color: var(--taupe); }
+.hero-right { position: relative; overflow: hidden; }
+.hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-right::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(232,226,216,0.1) 0%, transparent 40%);
+}
+.hero-pill {
+  position: absolute; bottom: 44px; left: -24px; z-index: 10;
+  background: var(--white); padding: 18px 26px;
+  box-shadow: 0 16px 48px rgba(44,35,48,0.14);
+  border-left: 3px solid var(--plum);
+  animation: slideIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s both;
+}
+.hero-pill-label { font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--plum); }
+.hero-pill-value {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 400;
+  color: var(--olive-dk); margin-top: 3px;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 
-  /* ─── TESTIMONIALS ─── */
-  .testimonials { padding: 120px 0; }
-  .testimonials-header { margin-bottom: 64px; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .testimonial-card {
-    background: var(--white); padding: 40px 36px;
-    box-shadow: 0 4px 24px rgba(61,43,31,0.06);
-    position: relative;
-  }
-  .testimonial-card::before {
-    content: '"';
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem; color: var(--gold); opacity: 0.2;
-    position: absolute; top: 10px; left: 24px; line-height: 1;
-  }
-  .stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 18px; }
-  .testimonial-text { font-size: 0.9rem; line-height: 1.8; color: var(--taupe); margin-bottom: 28px; font-style: italic; }
-  .testimonial-author { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--deep); }
-  .testimonial-location { font-size: 0.72rem; color: var(--sand); margin-top: 4px; }
+/* ── MARQUEE ── */
+.band { background: var(--olive-dk); padding: 15px 0; overflow: hidden; }
+.band-track {
+  display: flex; white-space: nowrap;
+  animation: scroll 32s linear infinite;
+}
+.band-item {
+  font-family: var(--font-body); font-size: 0.66rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--lavender); padding: 0 36px;
+  display: flex; align-items: center; gap: 18px;
+}
+.band-item::after { content: '✦'; color: var(--sage); font-size: 0.5rem; }
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
-  /* ─── GALLERY ─── */
-  .gallery { padding: 80px 0; }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 280px 280px;
-    gap: 10px; margin-top: 48px;
-  }
-  .gallery-item { overflow: hidden; position: relative; }
-  .gallery-item:nth-child(1) { grid-row: span 2; }
-  .gallery-item:nth-child(4) { grid-column: span 2; }
-  .gallery-img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .gallery-img-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 8px;
-  }
-  .gallery-item:hover .gallery-img { transform: scale(1.05); }
-  .gallery-colors {
-    background: linear-gradient(135deg, #D4A882, #E8C9B0);
-  }
-  .gallery-colors-2 { background: linear-gradient(135deg, #C9A96E, #D4A882); }
-  .gallery-colors-3 { background: linear-gradient(135deg, #A8B5A0, #D4A882); }
-  .gallery-colors-4 { background: linear-gradient(135deg, #E8C9B0, #C9A96E); }
-  .gallery-colors-5 { background: linear-gradient(135deg, #8B6F5A, #C9A96E); }
+/* ── SECTION SHARED ── */
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 64px; }
+.section-tag {
+  font-family: var(--font-body); font-size: 0.66rem; font-weight: 400;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--plum);
+  display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+}
+.section-tag::before { content: ''; width: 24px; height: 1px; background: var(--plum); }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 3.5vw, 3.3rem);
+  font-weight: 300; line-height: 1.13; color: var(--olive-dk);
+}
+.section-title em { font-style: italic; color: var(--plum); }
 
-  /* ─── BOOKING / CTA ─── */
-  .booking {
-    padding: 120px 0;
-    background: var(--deep);
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .booking::before {
-    content: 'BOOK';
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22vw; font-weight: 600;
-    color: rgba(255,255,255,0.02);
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    user-select: none;
-  }
-  .booking-inner { position: relative; z-index: 2; }
-  .booking .section-tag { justify-content: center; color: var(--gold); }
-  .booking .section-tag::before { background: var(--gold); }
-  .booking .section-title { color: var(--cream); margin: 0 auto; max-width: 700px; }
-  .booking-sub { font-size: 0.95rem; color: var(--blush); opacity: 0.75; margin: 24px auto 48px; max-width: 500px; line-height: 1.8; }
-  .booking-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-  .btn-outline {
-    border: 1px solid rgba(232,201,176,0.4); color: var(--blush);
-    padding: 15px 36px; font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
-    border-radius: 2px; background: transparent; cursor: pointer;
-    transition: all 0.3s;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-  .booking-contact {
-    margin-top: 60px; display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;
-  }
-  .contact-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .contact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
-  .contact-value { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--cream); }
-  .contact-value a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(232, 201, 176, 0.35);
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .contact-value a:hover { border-bottom-color: var(--gold); color: var(--gold); }
+/* ── OUTCOMES ── */
+.outcomes { padding: 88px 0; background: var(--olive-dk); }
+.outcomes-inner { max-width: 1200px; margin: 0 auto; padding: 0 64px; text-align: center; }
+.outcomes-kicker {
+  font-size: 0.67rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--lavender); margin-bottom: 14px;
+}
+.outcomes-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 300; color: var(--beige-lt); margin-bottom: 14px;
+}
+.outcomes-headline em { font-style: italic; color: var(--lavender); }
+.outcomes-sub {
+  font-size: 0.88rem; color: rgba(208,200,185,0.6); line-height: 1.8;
+  max-width: 540px; margin: 0 auto 56px;
+}
+.outcomes-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+}
+.outcome-item {
+  padding: 44px 36px; background: var(--olive-dk);
+  border: 1px solid rgba(176,163,180,0.12); transition: background 0.3s;
+}
+.outcome-item:hover { background: rgba(115,96,123,0.12); }
+.outcome-icon { font-size: 1.6rem; margin-bottom: 14px; }
+.outcome-title {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 400; color: var(--beige-lt); margin-bottom: 10px;
+}
+.outcome-desc { font-size: 0.81rem; line-height: 1.8; color: rgba(208,200,185,0.5); }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: #1E1208; padding: 60px; text-align: center;
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; font-weight: 300; color: var(--cream);
-    margin-bottom: 24px; letter-spacing: 0.06em;
-  }
-  .footer-logo span { color: var(--gold); }
-  .footer-links {
-    display: flex; justify-content: center; gap: 36px;
-    list-style: none; flex-wrap: wrap; margin-bottom: 36px;
-  }
-  .footer-links a {
-    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: rgba(232,201,176,0.4); text-decoration: none; transition: color 0.25s;
-  }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-divider { width: 60px; height: 1px; background: var(--gold); opacity: 0.3; margin: 0 auto 28px; }
-  .footer-copy { font-size: 0.72rem; color: rgba(232,201,176,0.25); letter-spacing: 0.08em; }
+/* ── PHILOSOPHY ── */
+.philosophy { padding: 120px 0; background: var(--beige); }
+.philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; }
+.phil-img { position: relative; }
+.phil-img img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+.phil-img-accent {
+  position: absolute; bottom: -18px; right: -18px;
+  width: 110px; height: 110px;
+  border: 2px solid var(--plum-lt); opacity: 0.4; z-index: -1;
+}
+.phil-body {
+  font-size: 0.92rem; line-height: 1.9; color: var(--olive); margin: 24px 0;
+}
+.phil-body strong { color: var(--olive-dk); font-weight: 400; }
+.phil-points { list-style: none; margin-bottom: 32px; }
+.phil-points li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 0.86rem; line-height: 1.7; color: var(--olive);
+  padding: 10px 0; border-bottom: 1px solid rgba(115,96,123,0.1);
+}
+.phil-points li:last-child { border-bottom: none; }
+.phil-check {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--plum-pale); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; margin-top: 2px;
+  font-size: 0.58rem; color: var(--plum);
+}
+.signature {
+  font-family: var(--font-display); font-size: 1.5rem;
+  font-style: italic; color: var(--plum);
+}
 
-  /* ─── ANIMATIONS ─── */
-  .fade-in {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
+/* ── SERVICES ── */
+.services { padding: 120px 0; background: var(--olive-dk); }
+.services .section-tag { color: var(--lavender); }
+.services .section-tag::before { background: var(--lavender); }
+.services .section-title { color: var(--beige-lt); }
+.services-header { margin-bottom: 64px; }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.svc-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(176,163,180,0.12);
+  padding: 40px 32px; position: relative; overflow: hidden;
+  transition: transform 0.3s, background 0.3s;
+}
+.svc-card:hover { transform: translateY(-5px); background: rgba(115,96,123,0.1); }
+.svc-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(to right, var(--plum), var(--lavender));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+}
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-num {
+  font-family: var(--font-display); font-size: 0.8rem;
+  color: var(--lavender); letter-spacing: 0.1em; margin-bottom: 18px; opacity: 0.7;
+}
+.svc-name {
+  font-family: var(--font-display); font-size: 1.48rem;
+  font-weight: 400; color: var(--beige-lt); line-height: 1.2; margin-bottom: 8px;
+}
+.svc-outcome {
+  font-size: 0.75rem; font-weight: 400; color: var(--sage);
+  letter-spacing: 0.05em; margin-bottom: 12px;
+}
+.svc-desc { font-size: 0.81rem; line-height: 1.8; color: rgba(208,200,185,0.55); margin-bottom: 24px; }
+.svc-price {
+  font-family: var(--font-display); font-size: 1.1rem;
+  color: var(--lavender); font-style: italic;
+}
+.svc-price span { font-size: 0.7rem; font-family: var(--font-body); font-style: normal; color: rgba(208,200,185,0.5); }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 1024px) {
-    nav { padding: 18px 32px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 120px 32px 60px; }
-    .hero-right { height: 60vw; }
-    .hero-img-placeholder { min-height: 60vw; }
-    .hero-badge { bottom: 24px; left: 24px; }
-    .philosophy-grid { grid-template-columns: 1fr; gap: 48px; }
-    .philosophy-content { padding-right: 0; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .experience-grid { grid-template-columns: 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .gallery-item:nth-child(1) { grid-row: auto; }
-    .gallery-item:nth-child(4) { grid-column: auto; }
-    .section-inner { padding: 0 32px; }
-    .pricing-card-body { padding: 32px; }
-    .booking { padding: 80px 0; }
-    .booking-contact { gap: 40px; }
-  }
-  @media (max-width: 600px) {
-    .services-grid { grid-template-columns: 1fr; }
-    .gallery-grid { grid-template-columns: 1fr; }
-    .hero-stats { flex-wrap: wrap; gap: 24px; }
-  }
+/* ── GALLERY ── */
+.gallery { padding: 100px 0 0; background: var(--beige); }
+.gallery-hd { max-width: 1200px; margin: 0 auto; padding: 0 64px 52px; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-rows: 320px 260px;
+  gap: 10px;
+}
+.g-item { overflow: hidden; }
+.g-item:first-child { grid-row: span 2; }
+.g-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.55s ease; }
+.g-item:hover img { transform: scale(1.06); }
 
-  /* ─── FLOATING WHATSAPP ─── */
-  .wa-float {
-    position: fixed;
-    bottom: max(24px, env(safe-area-inset-bottom, 0px));
-    right: max(24px, env(safe-area-inset-right, 0px));
-    z-index: 999;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: #25D366;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 32px rgba(37, 211, 102, 0.45);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    text-decoration: none;
-  }
-  .wa-float:hover {
-    transform: scale(1.06);
-    box-shadow: 0 12px 40px rgba(37, 211, 102, 0.55);
-    color: #fff;
-  }
-  .wa-float svg { width: 30px; height: 30px; display: block; }
-  .wa-float:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
-  }
+/* ── PRICING ── */
+.pricing { padding: 120px 0; background: var(--lav-pale); }
+.pricing-header { text-align: center; margin-bottom: 60px; }
+.pricing-header .section-tag { justify-content: center; }
+.pricing-header .section-title { margin-top: 12px; }
+.pricing-tabs {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+}
+.tab-btn {
+  padding: 9px 20px; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  border: 1px solid rgba(115,96,123,0.25); background: transparent;
+  color: var(--plum-lt); cursor: pointer; border-radius: 2px; transition: all 0.25s;
+}
+.tab-btn.active, .tab-btn:hover { background: var(--plum); color: var(--white); border-color: var(--plum); }
+.pricing-panel { display: none; }
+.pricing-panel.active { display: block; }
+.pricing-card { max-width: 720px; margin: 0 auto; background: var(--white); overflow: hidden; box-shadow: 0 20px 60px rgba(44,35,48,0.08); }
+.pc-head {
+  background: linear-gradient(135deg, var(--olive) 0%, var(--sage-dk) 100%);
+  padding: 36px 48px; text-align: center;
+}
+.pc-head h3 {
+  font-family: var(--font-display); font-size: 1.9rem; font-weight: 300;
+  color: var(--beige-lt); margin-bottom: 6px;
+}
+.pc-head p { font-size: 0.76rem; color: rgba(232,226,216,0.7); letter-spacing: 0.08em; }
+.pc-body { padding: 44px 48px; }
+.pc-duration {
+  font-size: 0.63rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--plum); font-weight: 400; margin-top: 28px; margin-bottom: 14px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--plum-pale);
+}
+.pc-duration:first-child { margin-top: 0; }
+.pc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0; border-bottom: 1px solid rgba(115,96,123,0.08);
+}
+.pc-row:last-child { border-bottom: none; }
+.pc-session { font-size: 0.85rem; color: var(--olive); }
+.pc-amount { font-family: var(--font-display); font-size: 1.25rem; color: var(--olive-dk); }
+.pc-badge {
+  background: var(--plum-pale); color: var(--plum);
+  font-size: 0.61rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 2px; margin-left: 8px;
+}
+.pc-cta { text-align: center; padding: 28px 48px; background: var(--beige-lt); }
+.pc-cta p { font-size: 0.8rem; color: var(--olive); margin-bottom: 18px; }
+
+/* ── WHY ── */
+.why { padding: 120px 0; background: var(--beige-lt); }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 56px; }
+.why-card {
+  background: var(--white); padding: 44px 32px;
+  border-top: 3px solid var(--sage);
+}
+.why-card:nth-child(2) { border-top-color: var(--plum); }
+.why-card:nth-child(3) { border-top-color: var(--lavender); }
+.why-icon { font-size: 1.8rem; margin-bottom: 16px; }
+.why-title {
+  font-family: var(--font-display); font-size: 1.35rem;
+  font-weight: 400; color: var(--olive-dk); margin-bottom: 12px;
+}
+.why-body { font-size: 0.83rem; line-height: 1.85; color: var(--olive); }
+
+/* ── TESTIMONIALS ── */
+.testimonials { padding: 120px 0; background: var(--beige); }
+.real-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.67rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--plum); margin-bottom: 48px;
+}
+.real-badge::before { content: ''; width: 20px; height: 1px; background: var(--plum); }
+.t-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.t-card {
+  background: var(--white); padding: 36px 30px;
+  border: 1px solid rgba(115,96,123,0.1); position: relative;
+}
+.t-card::before {
+  content: '"'; font-family: var(--font-display);
+  font-size: 5rem; color: var(--plum); opacity: 0.1;
+  position: absolute; top: 6px; left: 18px; line-height: 1;
+}
+.t-stars { color: var(--plum); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 14px; }
+.t-text { font-size: 0.87rem; line-height: 1.85; color: var(--olive); margin-bottom: 22px; font-style: italic; }
+.t-author { font-size: 0.76rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--olive-dk); }
+.t-loc { font-size: 0.68rem; color: var(--plum-lt); margin-top: 3px; }
+
+/* ── BOOKING CTA ── */
+.booking {
+  padding: 120px 0; background: var(--olive-dk);
+  text-align: center; position: relative; overflow: hidden;
+}
+.booking::before {
+  content: 'BOOK'; font-family: var(--font-display);
+  font-size: 22vw; font-weight: 600; color: rgba(255,255,255,0.025);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); white-space: nowrap; user-select: none;
+}
+.booking::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(115,96,123,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.booking-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; padding: 0 48px; }
+.booking .section-tag { justify-content: center; color: var(--lavender); }
+.booking .section-tag::before { background: var(--lavender); }
+.booking-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 300; line-height: 1.1; color: var(--beige-lt); margin: 18px 0 22px;
+}
+.booking-title em { font-style: italic; color: var(--lavender); }
+.booking-sub {
+  font-size: 0.88rem; line-height: 1.85; color: rgba(208,200,185,0.55); margin-bottom: 48px;
+}
+.booking-sub strong { color: rgba(208,200,185,0.8); font-weight: 400; }
+.booking-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 60px; }
+.btn-outline-w {
+  border: 1px solid rgba(176,163,180,0.3); color: rgba(208,200,185,0.65);
+  padding: 15px 32px; font-family: var(--font-body); font-size: 0.74rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+  border-radius: 2px; background: transparent; cursor: pointer; transition: all 0.3s;
+}
+.btn-outline-w:hover { border-color: var(--lavender); color: var(--lavender); }
+.contact-strip {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 52px;
+  padding-top: 48px; border-top: 1px solid rgba(115,96,123,0.2);
+}
+.c-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.c-label { font-size: 0.61rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender); }
+.c-value { font-family: var(--font-display); font-size: 1.05rem; color: var(--beige-lt); }
+.c-value a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(176,163,180,0.3); transition: border-color 0.2s, color 0.2s; }
+.c-value a:hover { border-bottom-color: var(--lavender); color: var(--lavender); }
+
+/* ── FOOTER ── */
+footer {
+  background: #1C1720; padding: 56px 64px;
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; gap: 32px;
+}
+.footer-logo img { height: 64px; width: auto; max-width: 260px; object-fit: contain; display: block; opacity: 0.85; }
+.footer-links { display: flex; justify-content: center; gap: 28px; list-style: none; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(176,163,180,0.35); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--lavender); }
+.footer-copy { font-size: 0.68rem; color: rgba(176,163,180,0.2); letter-spacing: 0.06em; text-align: right; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.on { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.2s; }
+.d3 { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1080px) {
+  nav { padding: 14px 32px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 110px 32px 60px; }
+  .hero-right { height: 70vw; }
+  .philosophy-grid { grid-template-columns: 1fr; gap: 48px; }
+  .services-grid, .why-grid, .t-grid { grid-template-columns: 1fr 1fr; }
+  .outcomes-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .g-item:first-child { grid-row: auto; }
+  footer { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 40px 32px; }
+  .footer-copy { text-align: center; }
+  .section-inner, .outcomes-inner, .gallery-hd, .booking-inner { padding: 0 32px; }
+  .pc-body, .pc-cta, .pc-head { padding: 28px 32px; }
+}
+@media (max-width: 640px) {
+  .services-grid, .why-grid, .t-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+  .contact-strip { gap: 36px; }
+}
 </style>
 </head>
 <body>
 
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Noura's <span>Magic Touch</span></a>
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1775160092/Beige_Aesthetic_Minimalist_Beauty_Logo_kpizzo.png" alt="Noura's Magic Touch" width="280" height="72" decoding="async">
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#services">Treatments</a></li>
+    <li><a href="#menu">Pricing</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." class="nav-cta" target="_blank" rel="noopener noreferrer">Book Now</a></li>
   </ul>
 </nav>
@@ -548,316 +546,162 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Home Service · Abu Dhabi · Since 2024</div>
+    <div class="hero-location">Home Wellness Therapy · Abu Dhabi</div>
     <h1 class="hero-title">
-      Restore your body.<br>
-      <em>Calm your mind.</em><br>
-      Elevate your soul.
+      Sculpt your body.<br>
+      <em>Release tension.</em><br>
+      Feel lighter<br>after just one session.
     </h1>
-    <p class="hero-subtitle">
-      Premium wellness brought to your door — experience the perfect balance of relaxation and healing through therapeutic touch, designed to renew you from the inside out.
+    <p class="hero-sub">
+      Premium massage and body treatments <strong>brought to your home</strong> in Abu Dhabi — combining lymphatic drainage, body sculpting, and therapeutic touch for <strong>visible results</strong> and deep relaxation.
     </p>
     <div class="hero-actions">
-      <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." class="btn-primary" target="_blank" rel="noopener noreferrer">Reserve on WhatsApp</a>
-      <a href="#menu" class="btn-ghost">View Menu</a>
+      <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." class="btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book on WhatsApp
+      </a>
+      <a href="#menu" class="btn-ghost">View Treatments</a>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">500+</span>
-        <span class="stat-label">Happy Clients</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">6</span>
-        <span class="stat-label">Signature Treatments</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">5★</span>
-        <span class="stat-label">Rated Experience</span>
-      </div>
+      <div class="stat"><span class="stat-n">500+</span><span class="stat-l">Clients Treated</span></div>
+      <div class="stat"><span class="stat-n">6</span><span class="stat-l">Specialized Treatments</span></div>
+      <div class="stat"><span class="stat-n">5★</span><span class="stat-l">Rated Home Service</span></div>
     </div>
   </div>
   <div class="hero-right">
-    <img class="hero-img" src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935373/spa_hero_section_c0pvoq.png" alt="Serene spa and massage wellness scene" width="800" height="1000" loading="eager" fetchpriority="high">
-    <div class="hero-overlay"></div>
-    <div class="hero-badge">
-      <div class="hero-badge-label">Starting from</div>
-      <div class="hero-badge-value">200 AED / session</div>
+    <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935373/spa_hero_section_c0pvoq.png" alt="Luxury spa massage session" width="800" height="1000" loading="eager" fetchpriority="high">
+    <div class="hero-pill">
+      <div class="hero-pill-label">Starting from</div>
+      <div class="hero-pill-value">200 AED / session</div>
     </div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-band">
-  <div class="marquee-track">
-    <div class="marquee-item">Brazilian Lymphatic Slimming</div>
-    <div class="marquee-item">Maderotherapy</div>
-    <div class="marquee-item">Brazilian Madero</div>
-    <div class="marquee-item">Relaxation Treatments</div>
-    <div class="marquee-item">Deep Tissue & Sport Massage</div>
-    <div class="marquee-item">Slimming Manual Massage</div>
-    <div class="marquee-item">Brazilian Lymphatic Slimming</div>
-    <div class="marquee-item">Maderotherapy</div>
-    <div class="marquee-item">Brazilian Madero</div>
-    <div class="marquee-item">Relaxation Treatments</div>
-    <div class="marquee-item">Deep Tissue & Sport Massage</div>
-    <div class="marquee-item">Slimming Manual Massage</div>
+<div class="band">
+  <div class="band-track">
+    <div class="band-item">Brazilian Lymphatic Slimming</div>
+    <div class="band-item">Maderotherapy</div>
+    <div class="band-item">Brazilian Madero</div>
+    <div class="band-item">Relaxation Treatments</div>
+    <div class="band-item">Deep Tissue & Sport Massage</div>
+    <div class="band-item">Slimming Manual Massage</div>
+    <div class="band-item">Brazilian Lymphatic Slimming</div>
+    <div class="band-item">Maderotherapy</div>
+    <div class="band-item">Brazilian Madero</div>
+    <div class="band-item">Relaxation Treatments</div>
+    <div class="band-item">Deep Tissue & Sport Massage</div>
+    <div class="band-item">Slimming Manual Massage</div>
   </div>
 </div>
 
-<!-- ABOUT / PHILOSOPHY -->
-<section class="philosophy" id="about">
-  <div class="section-inner">
-    <div class="philosophy-grid">
-      <div class="philosophy-img-wrap fade-in">
-        <img class="philosophy-img" src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935372/spa_about_portrait_xga2fr.png" alt="Noura's Magic Touch — warm spa portrait" width="600" height="800" loading="lazy">
-        <div class="img-accent"></div>
+<!-- OUTCOMES -->
+<section class="outcomes">
+  <div class="outcomes-inner">
+    <div class="outcomes-kicker">Not just a massage. A body transformation session.</div>
+    <h2 class="outcomes-headline reveal">Every treatment is designed to do<br><em>one of three things</em></h2>
+    <p class="outcomes-sub">All delivered in the comfort of your home — with a calm, professional setup that turns your space into a private wellness sanctuary.</p>
+    <div class="outcomes-grid">
+      <div class="outcome-item reveal">
+        <div class="outcome-icon">💧</div>
+        <div class="outcome-title">Reduce Bloating & Water Retention</div>
+        <p class="outcome-desc">Targeted lymphatic techniques that drain excess fluid, leaving you feeling instantly lighter after just one session.</p>
       </div>
-      <div class="philosophy-content">
-        <div class="section-tag fade-in">Our Philosophy</div>
-        <h2 class="section-title fade-in">
-          Healing is an art.<br>
-          <em>Touch is the medium.</em>
-        </h2>
-        <p class="philosophy-body fade-in">
-          At Noura's Magic Touch, every session is crafted with intention — in the comfort of your home across Abu Dhabi. We blend proven therapeutic techniques with feminine grace and intuitive care — because your body deserves more than routine, it deserves <strong>ritual</strong>.
-        </p>
-        <p class="philosophy-body fade-in" style="margin-top:-16px;">
-          Whether you're seeking relief, rejuvenation, or a moment of pure stillness, our treatments are designed to meet you exactly where you are.
-        </p>
-        <div class="signature fade-in">— Noura</div>
+      <div class="outcome-item reveal d1">
+        <div class="outcome-icon">✦</div>
+        <div class="outcome-title">Sculpt & Tone Your Body</div>
+        <p class="outcome-desc">Maderotherapy and manual contouring that work with your body's natural lines for visible definition over time.</p>
+      </div>
+      <div class="outcome-item reveal d2">
+        <div class="outcome-icon">🌿</div>
+        <div class="outcome-title">Release Deep Physical Tension</div>
+        <p class="outcome-desc">Therapeutic pressure that reaches layers of chronic tension — muscles looser, posture better, mind calm.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES OVERVIEW -->
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="about">
+  <div class="section-inner">
+    <div class="philosophy-grid">
+      <div class="phil-img reveal">
+        <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935372/spa_about_portrait_xga2fr.png" alt="Noura — founder" width="600" height="800" loading="lazy">
+        <div class="phil-img-accent"></div>
+      </div>
+      <div>
+        <div class="section-tag">Your Body, Transformed</div>
+        <h2 class="section-title reveal">
+          Your body holds stress,<br>tension, and fluid.<br>
+          <em>We help release it.</em>
+        </h2>
+        <p class="phil-body reveal">
+          At Noura's Magic Touch, each session combines proven techniques like <strong>lymphatic drainage</strong> and <strong>maderotherapy</strong> with intuitive, personalized care.
+        </p>
+        <p class="phil-body reveal" style="margin-top:-10px">
+          This isn't routine massage. It's targeted work designed to create <strong>real, visible change</strong> — while giving you a moment to fully slow down.
+        </p>
+        <ul class="phil-points reveal">
+          <li><span class="phil-check">✓</span>Fully mobile — we come to your home, hotel, or villa</li>
+          <li><span class="phil-check">✓</span>Professional, respectful, and discreet</li>
+          <li><span class="phil-check">✓</span>Designed specifically for women</li>
+          <li><span class="phil-check">✓</span>Results that build with each session</li>
+        </ul>
+        <div class="signature reveal">— Noura</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
 <section class="services" id="services">
   <div class="section-inner">
     <div class="services-header">
       <div class="section-tag">Our Treatments</div>
-      <h2 class="section-title fade-in">
-        Six pathways<br>to <em>profound wellness</em>
-      </h2>
+      <h2 class="section-title reveal">Six pathways to<br><em>your best self</em></h2>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in">
-        <div class="service-number">01</div>
-        <div class="service-name">Brazilian Lymphatic Slimming</div>
-        <p class="service-desc">A targeted technique that stimulates lymphatic drainage to reduce water retention, sculpt the silhouette, and revitalize circulation.</p>
-        <div class="service-price">From 300 DHS <span>/ session</span></div>
+      <div class="svc-card reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-name">Brazilian Lymphatic Slimming</div>
+        <div class="svc-outcome">Reduce bloating. Drain fluid. Feel instantly lighter.</div>
+        <p class="svc-desc">A targeted lymphatic technique that improves circulation and sculpts your body by reducing water retention.</p>
+        <div class="svc-price">From 300 DHS <span>/ session</span></div>
       </div>
-      <div class="service-card fade-in fade-in-delay-1">
-        <div class="service-number">02</div>
-        <div class="service-name">Maderotherapy</div>
-        <p class="service-desc">Traditional wood therapy tools work in harmony to break down fat deposits, tone the skin, and deeply contour the body's natural lines.</p>
-        <div class="service-price">From 300 DHS <span>/ session</span></div>
+      <div class="svc-card reveal d1">
+        <div class="svc-num">02</div>
+        <div class="svc-name">Maderotherapy</div>
+        <div class="svc-outcome">Break down fat. Tone your body. Improve skin texture.</div>
+        <p class="svc-desc">Wood therapy tools stimulate circulation and help contour your natural shape over consistent sessions.</p>
+        <div class="svc-price">From 300 DHS <span>/ session</span></div>
       </div>
-      <div class="service-card fade-in fade-in-delay-2">
-        <div class="service-number">03</div>
-        <div class="service-name">Brazilian Madero</div>
-        <p class="service-desc">The ultimate fusion of lymphatic and wood therapy — a 90-minute transformative session for visible body-shaping results.</p>
-        <div class="service-price">From 400 DHS <span>/ session</span></div>
+      <div class="svc-card reveal d2">
+        <div class="svc-num">03</div>
+        <div class="svc-name">Brazilian Madero</div>
+        <div class="svc-outcome">The ultimate sculpting session — lymphatic + wood therapy combined.</div>
+        <p class="svc-desc">Our most transformative 90-minute treatment for accelerated, visible body shaping.</p>
+        <div class="svc-price">From 400 DHS <span>/ session</span></div>
       </div>
-      <div class="service-card fade-in">
-        <div class="service-number">04</div>
-        <div class="service-name">Relaxation Treatments</div>
-        <p class="service-desc">Surrender to stillness. Gentle, flowing strokes ease tension, quiet the nervous system, and restore your natural state of ease.</p>
-        <div class="service-price">From 200 DHS <span>/ session</span></div>
+      <div class="svc-card reveal">
+        <div class="svc-num">04</div>
+        <div class="svc-name">Relaxation Treatments</div>
+        <div class="svc-outcome">Quiet your mind. Melt stress. Sleep deeply tonight.</div>
+        <p class="svc-desc">Slow, flowing strokes that ease your nervous system and give your body permission to fully let go.</p>
+        <div class="svc-price">From 200 DHS <span>/ session</span></div>
       </div>
-      <div class="service-card fade-in fade-in-delay-1">
-        <div class="service-number">05</div>
-        <div class="service-name">Deep Tissue & Sport Massage</div>
-        <p class="service-desc">Targeted deep-pressure work for athletes and active bodies — releasing chronic tension, improving mobility, and speeding recovery.</p>
-        <div class="service-price">From 250 DHS <span>/ session</span></div>
+      <div class="svc-card reveal d1">
+        <div class="svc-num">05</div>
+        <div class="svc-name">Deep Tissue & Sport Massage</div>
+        <div class="svc-outcome">Release tight muscles. Move better. Recover faster.</div>
+        <p class="svc-desc">Focused deep-pressure techniques targeting the root of pain — not just the surface.</p>
+        <div class="svc-price">From 250 DHS <span>/ session</span></div>
       </div>
-      <div class="service-card fade-in fade-in-delay-2">
-        <div class="service-number">06</div>
-        <div class="service-name">Slimming Manual Massage</div>
-        <p class="service-desc">Purposeful manual techniques designed to stimulate metabolism, smooth the skin's texture, and refine body contours with consistency.</p>
-        <div class="service-price">From 250 DHS <span>/ session</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING MENU -->
-<section class="pricing" id="menu">
-  <div class="section-inner">
-    <div class="pricing-header">
-      <div class="section-tag">Luxury Massage Menu</div>
-      <h2 class="section-title">Transparent pricing.<br><em>Exceptional value.</em></h2>
-      <div class="pricing-tabs" id="pricingTabs">
-        <button class="tab-btn active" data-tab="lymphatic">Lymphatic Slimming</button>
-        <button class="tab-btn" data-tab="madero">Maderotherapy</button>
-        <button class="tab-btn" data-tab="bmadero">Brazilian Madero</button>
-        <button class="tab-btn" data-tab="relax">Relaxation</button>
-        <button class="tab-btn" data-tab="deep">Deep Tissue</button>
-        <button class="tab-btn" data-tab="slimming">Slimming Manual</button>
-      </div>
-    </div>
-
-    <!-- Lymphatic -->
-    <div class="pricing-panel active" id="tab-lymphatic">
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <h3>Brazilian Lymphatic Slimming</h3>
-          <p>Drainage · Sculpting · Circulation Boost</p>
-        </div>
-        <div class="pricing-card-body">
-          <div class="pricing-duration">60 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">300 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 250</span></span><span class="pricing-amount">1,250 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">2,500 DHS</span></div>
-
-          <div class="pricing-duration">90 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">350 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 250</span></span><span class="pricing-amount">1,500 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">2,800 DHS</span></div>
-        </div>
-        <div class="pricing-cta">
-          <p>Packages never expire. Use at your own pace.</p>
-          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Maderotherapy -->
-    <div class="pricing-panel" id="tab-madero">
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <h3>Maderotherapy</h3>
-          <p>Wood Therapy · Contouring · Skin Toning</p>
-        </div>
-        <div class="pricing-card-body">
-          <div class="pricing-duration">60 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">300 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 200</span></span><span class="pricing-amount">1,300 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">2,700 DHS</span></div>
-
-          <div class="pricing-duration">90 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">350 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 50</span></span><span class="pricing-amount">1,700 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">3,000 DHS</span></div>
-        </div>
-        <div class="pricing-cta">
-          <p>Packages never expire. Use at your own pace.</p>
-          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Brazilian Madero -->
-    <div class="pricing-panel" id="tab-bmadero">
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <h3>Brazilian Madero</h3>
-          <p>Ultimate Fusion · 90-Minute Transformation</p>
-        </div>
-        <div class="pricing-card-body">
-          <div class="pricing-duration">90 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">400 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 300</span></span><span class="pricing-amount">1,700 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">3,000 DHS</span></div>
-        </div>
-        <div class="pricing-cta">
-          <p>Our most transformative treatment — results build with consistency.</p>
-          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Relaxation -->
-    <div class="pricing-panel" id="tab-relax">
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <h3>Relaxation Treatments</h3>
-          <p>Calm · Rest · Restore</p>
-        </div>
-        <div class="pricing-card-body">
-          <div class="pricing-duration">60 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">200 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 100</span></span><span class="pricing-amount">900 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">1,800 DHS</span></div>
-
-          <div class="pricing-duration">90 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">250 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 0</span></span><span class="pricing-amount">1,250 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">2,500 DHS</span></div>
-        </div>
-        <div class="pricing-cta">
-          <p>Packages never expire. Use at your own pace.</p>
-          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Deep Tissue -->
-    <div class="pricing-panel" id="tab-deep">
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <h3>Deep Tissue & Sport Massage</h3>
-          <p>Relief · Recovery · Performance</p>
-        </div>
-        <div class="pricing-card-body">
-          <div class="pricing-duration">60 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">250 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 150</span></span><span class="pricing-amount">1,100 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">2,000 DHS</span></div>
-        </div>
-        <div class="pricing-cta">
-          <p>Packages never expire. Use at your own pace.</p>
-          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slimming Manual -->
-    <div class="pricing-panel" id="tab-slimming">
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <h3>Slimming Manual Massage</h3>
-          <p>Metabolism · Contouring · Skin Texture</p>
-        </div>
-        <div class="pricing-card-body">
-          <div class="pricing-duration">60 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">250 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 100</span></span><span class="pricing-amount">1,150 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">2,300 DHS</span></div>
-
-          <div class="pricing-duration">90 Minutes</div>
-          <div class="pricing-row"><span class="pricing-session">Single Session</span><span class="pricing-amount">270 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 5 <span class="pricing-badge">Save 50</span></span><span class="pricing-amount">1,300 DHS</span></div>
-          <div class="pricing-row"><span class="pricing-session">Package of 10 <span class="pricing-badge">Best Value</span></span><span class="pricing-amount">2,500 DHS</span></div>
-        </div>
-        <div class="pricing-cta">
-          <p>Packages never expire. Use at your own pace.</p>
-          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="experience">
-  <div class="section-inner">
-    <div class="section-tag">The Noura Experience</div>
-    <h2 class="section-title fade-in">Why clients return,<br><em>again and again</em></h2>
-    <div class="experience-grid">
-      <div class="exp-card fade-in">
-        <div class="exp-icon">🌸</div>
-        <div class="exp-title">Feminine Expertise</div>
-        <p class="exp-body">Our treatments are designed specifically with women's bodies in mind — intuitive, respectful, and deeply effective.</p>
-      </div>
-      <div class="exp-card fade-in fade-in-delay-1">
-        <div class="exp-icon">✦</div>
-        <div class="exp-title">Your Space, Elevated</div>
-        <p class="exp-body">We bring a calm, professional setup to your home — every detail, from atmosphere to touch, is crafted for your total comfort.</p>
-      </div>
-      <div class="exp-card fade-in fade-in-delay-2">
-        <div class="exp-icon">🌿</div>
-        <div class="exp-title">Proven Results</div>
-        <p class="exp-body">Our clients see and feel real change — reduced tension, improved tone, lighter energy. Results that speak for themselves.</p>
+      <div class="svc-card reveal d2">
+        <div class="svc-num">06</div>
+        <div class="svc-name">Slimming Manual Massage</div>
+        <div class="svc-outcome">Stimulate metabolism. Refine contours. Smooth skin texture.</div>
+        <p class="svc-desc">Purposeful manual techniques designed to boost lymphatic flow and gradually reshape your silhouette.</p>
+        <div class="svc-price">From 250 DHS <span>/ session</span></div>
       </div>
     </div>
   </div>
@@ -865,56 +709,191 @@
 
 <!-- GALLERY -->
 <section class="gallery">
-  <div class="section-inner">
-    <div class="section-tag">The Space</div>
-    <h2 class="section-title fade-in">A sanctuary<br><em>awaits you</em></h2>
+  <div class="gallery-hd">
+    <div class="section-tag">The Experience</div>
+    <h2 class="section-title reveal">A sanctuary,<br><em>wherever you are</em></h2>
   </div>
-  <div style="padding: 0 60px; max-width:1320px; margin:0 auto;">
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img class="gallery-img" src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935392/Spa_gallery_treatment_room_le44uq.png" alt="Treatment room at the spa" width="800" height="1200" loading="lazy">
+  <div class="gallery-grid" style="max-width:1400px;margin:0 auto;padding:0 10px;">
+    <div class="g-item">
+      <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935392/Spa_gallery_treatment_room_le44uq.png" alt="Treatment room" width="800" height="1200" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935383/spa_gallery_massage_session_ow4vkk.png" alt="Massage session" width="600" height="320" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935383/spa_gallery_wellness_detail_itzeps.png" alt="Wellness detail" width="600" height="320" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935387/spa_gallery_ambiance_wide_kcwusq.png" alt="Spa ambiance" width="1200" height="260" loading="lazy">
+    </div>
+    <div class="g-item">
+      <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935388/spa_gallery_spa_detail_pgwedd.png" alt="Spa detail" width="600" height="260" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="menu">
+  <div class="section-inner">
+    <div class="pricing-header">
+      <div class="section-tag">Luxury Menu</div>
+      <h2 class="section-title reveal">Transparent pricing.<br><em>Exceptional value.</em></h2>
+      <div class="pricing-tabs" id="tabs">
+        <button class="tab-btn active" data-tab="lymph">Lymphatic Slimming</button>
+        <button class="tab-btn" data-tab="mader">Maderotherapy</button>
+        <button class="tab-btn" data-tab="bmader">Brazilian Madero</button>
+        <button class="tab-btn" data-tab="relax">Relaxation</button>
+        <button class="tab-btn" data-tab="deep">Deep Tissue</button>
+        <button class="tab-btn" data-tab="slim">Slimming Manual</button>
       </div>
-      <div class="gallery-item">
-        <img class="gallery-img" src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935383/spa_gallery_massage_session_ow4vkk.png" alt="Massage session" width="600" height="280" loading="lazy">
+    </div>
+
+    <div class="pricing-panel active" id="tab-lymph">
+      <div class="pricing-card">
+        <div class="pc-head"><h3>Brazilian Lymphatic Slimming</h3><p>Drainage · Sculpting · Instant Lightness</p></div>
+        <div class="pc-body">
+          <div class="pc-duration">60 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">300 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 250</span></span><span class="pc-amount">1,250 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">2,500 DHS</span></div>
+          <div class="pc-duration">90 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">350 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 250</span></span><span class="pc-amount">1,500 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">2,800 DHS</span></div>
+        </div>
+        <div class="pc-cta"><p>Packages never expire — use at your own pace.</p>
+          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a></div>
       </div>
-      <div class="gallery-item">
-        <img class="gallery-img" src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935383/spa_gallery_wellness_detail_itzeps.png" alt="Wellness and spa detail" width="600" height="280" loading="lazy">
+    </div>
+    <div class="pricing-panel" id="tab-mader">
+      <div class="pricing-card">
+        <div class="pc-head"><h3>Maderotherapy</h3><p>Wood Therapy · Contouring · Skin Toning</p></div>
+        <div class="pc-body">
+          <div class="pc-duration">60 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">300 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 200</span></span><span class="pc-amount">1,300 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">2,700 DHS</span></div>
+          <div class="pc-duration">90 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">350 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 50</span></span><span class="pc-amount">1,700 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">3,000 DHS</span></div>
+        </div>
+        <div class="pc-cta"><p>Packages never expire — use at your own pace.</p>
+          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a></div>
       </div>
-      <div class="gallery-item">
-        <img class="gallery-img" src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935387/spa_gallery_ambiance_wide_kcwusq.png" alt="Spa ambiance and products" width="1200" height="280" loading="lazy">
+    </div>
+    <div class="pricing-panel" id="tab-bmader">
+      <div class="pricing-card">
+        <div class="pc-head"><h3>Brazilian Madero</h3><p>Ultimate Fusion · 90-Minute Transformation</p></div>
+        <div class="pc-body">
+          <div class="pc-duration">90 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">400 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 300</span></span><span class="pc-amount">1,700 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">3,000 DHS</span></div>
+        </div>
+        <div class="pc-cta"><p>Our most transformative treatment — results build with consistency.</p>
+          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a></div>
       </div>
-      <div class="gallery-item">
-        <img class="gallery-img" src="https://res.cloudinary.com/dcuswyfur/image/upload/v1774935388/spa_gallery_spa_detail_pgwedd.png" alt="Spa interior detail" width="600" height="280" loading="lazy">
+    </div>
+    <div class="pricing-panel" id="tab-relax">
+      <div class="pricing-card">
+        <div class="pc-head"><h3>Relaxation Treatments</h3><p>Calm · Rest · Restore</p></div>
+        <div class="pc-body">
+          <div class="pc-duration">60 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">200 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 100</span></span><span class="pc-amount">900 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">1,800 DHS</span></div>
+          <div class="pc-duration">90 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">250 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5</span><span class="pc-amount">1,250 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">2,500 DHS</span></div>
+        </div>
+        <div class="pc-cta"><p>Packages never expire — use at your own pace.</p>
+          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a></div>
+      </div>
+    </div>
+    <div class="pricing-panel" id="tab-deep">
+      <div class="pricing-card">
+        <div class="pc-head"><h3>Deep Tissue & Sport Massage</h3><p>Relief · Recovery · Performance</p></div>
+        <div class="pc-body">
+          <div class="pc-duration">60 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">250 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 150</span></span><span class="pc-amount">1,100 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">2,000 DHS</span></div>
+        </div>
+        <div class="pc-cta"><p>Packages never expire — use at your own pace.</p>
+          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a></div>
+      </div>
+    </div>
+    <div class="pricing-panel" id="tab-slim">
+      <div class="pricing-card">
+        <div class="pc-head"><h3>Slimming Manual Massage</h3><p>Metabolism · Contouring · Skin Texture</p></div>
+        <div class="pc-body">
+          <div class="pc-duration">60 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">250 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 100</span></span><span class="pc-amount">1,150 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">2,300 DHS</span></div>
+          <div class="pc-duration">90 Minutes</div>
+          <div class="pc-row"><span class="pc-session">Single Session</span><span class="pc-amount">270 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 5 <span class="pc-badge">Save 50</span></span><span class="pc-amount">1,300 DHS</span></div>
+          <div class="pc-row"><span class="pc-session">Package of 10 <span class="pc-badge">Best Value</span></span><span class="pc-amount">2,500 DHS</span></div>
+        </div>
+        <div class="pc-cta"><p>Packages never expire — use at your own pace.</p>
+          <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20this%20treatment." class="btn-primary" target="_blank" rel="noopener noreferrer">Book This Treatment</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="section-inner">
+    <div class="section-tag">Why Clients Keep Coming Back</div>
+    <h2 class="section-title reveal">A no-brainer choice,<br><em>every single time</em></h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">✦</div>
+        <div class="why-title">Results You Can Feel — and See</div>
+        <p class="why-body">Less bloating. More definition. A lighter, more relaxed body after each session. Clients notice the difference within hours of their first visit.</p>
+      </div>
+      <div class="why-card reveal d1">
+        <div class="why-icon">🏠</div>
+        <div class="why-title">We Come to You</div>
+        <p class="why-body">No driving. No waiting. No parking. Your home becomes your private spa — we handle everything from setup to cleanup.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-icon">🌸</div>
+        <div class="why-title">Professional, Respectful, Discreet</div>
+        <p class="why-body">Designed for women who want high-quality care in complete comfort. Every session is handled with professionalism and the utmost discretion.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials" id="testimonials">
+<section class="testimonials" id="reviews">
   <div class="section-inner">
-    <div class="testimonials-header">
-      <div class="section-tag">Client Love</div>
-      <h2 class="section-title fade-in">Words from<br><em>those who've felt it</em></h2>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card fade-in">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">I've been to many massage therapists but Noura is in a completely different league. My body felt entirely new after just one session. The lymphatic massage reduced bloating I'd had for months.</p>
-        <div class="testimonial-author">Layla M.</div>
-        <div class="testimonial-location">Dubai, UAE</div>
+    <div class="section-tag">Client Love</div>
+    <h2 class="section-title reveal">Words from<br><em>those who've felt it</em></h2>
+    <div class="real-badge" style="margin-top:16px">Real results from real clients</div>
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">I've been to many massage therapists but Noura is in a completely different league. My body felt entirely new after just one session. The lymphatic massage reduced bloating I'd had for months.</p>
+        <div class="t-author">Layla M.</div>
+        <div class="t-loc">Abu Dhabi, UAE</div>
       </div>
-      <div class="testimonial-card fade-in fade-in-delay-1">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">The maderotherapy package was worth every dirham. By session 3 I could already see a difference in my waistline. Noura is so professional and the atmosphere is so calming.</p>
-        <div class="testimonial-author">Sara K.</div>
-        <div class="testimonial-location">Abu Dhabi, UAE</div>
+      <div class="t-card reveal d1">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">The maderotherapy package was worth every dirham. By session 3 I could already see a difference in my waistline. Noura is so professional — having her come to my home made everything so easy.</p>
+        <div class="t-author">Sara K.</div>
+        <div class="t-loc">Dubai, UAE</div>
       </div>
-      <div class="testimonial-card fade-in fade-in-delay-2">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">I came for stress relief and left feeling like a completely new person. The relaxation treatment was the most peaceful 90 minutes of my year. I've already booked a package.</p>
-        <div class="testimonial-author">Fatima A.</div>
-        <div class="testimonial-location">Sharjah, UAE</div>
+      <div class="t-card reveal d2">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">I came for stress relief and left feeling like a completely new person. The relaxation treatment was the most peaceful 90 minutes of my year. I've already booked a full package.</p>
+        <div class="t-author">Fatima A.</div>
+        <div class="t-loc">Sharjah, UAE</div>
       </div>
     </div>
   </div>
@@ -922,33 +901,37 @@
 
 <!-- BOOKING CTA -->
 <section class="booking" id="book">
-  <div class="section-inner booking-inner">
+  <div class="booking-inner">
     <div class="section-tag">Begin Your Journey</div>
-    <h2 class="section-title">
-      You deserve to feel<br>
-      <em>extraordinary.</em>
+    <h2 class="booking-title">
+      Feel the difference<br>after your <em>first session.</em>
     </h2>
-    <p class="booking-sub">Home service in Abu Dhabi — we come to you with everything needed for a full spa-quality session. Serving clients since 2024. Book on WhatsApp for the fastest reply; first-time clients receive a complimentary wellness consultation to design your perfect treatment.</p>
+    <p class="booking-sub">
+      Home service across <strong>Abu Dhabi</strong>. Book directly on WhatsApp for fastest availability — most clients get a same-week appointment. First-time clients receive a complimentary wellness consultation.
+    </p>
     <div class="booking-actions">
-      <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." class="btn-primary" target="_blank" rel="noopener noreferrer">Book via WhatsApp</a>
-      <a href="mailto:info.nouramagictouch@gmail.com" class="btn-outline">Send an Email</a>
+      <a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." class="btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:17px;height:17px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book Your Session Now
+      </a>
+      <a href="mailto:info.nouramagictouch@gmail.com" class="btn-outline-w">Send an Email</a>
     </div>
-    <div class="booking-contact">
-      <div class="contact-item">
-        <span class="contact-label">Call / WhatsApp</span>
-        <span class="contact-value"><a href="tel:+971506052433">+971 50 605 2433</a></span>
+    <div class="contact-strip">
+      <div class="c-item">
+        <span class="c-label">Call / WhatsApp</span>
+        <span class="c-value"><a href="tel:+971506052433">+971 50 605 2433</a></span>
       </div>
-      <div class="contact-item">
-        <span class="contact-label">Email</span>
-        <span class="contact-value"><a href="mailto:info.nouramagictouch@gmail.com">info.nouramagictouch@gmail.com</a></span>
+      <div class="c-item">
+        <span class="c-label">Email</span>
+        <span class="c-value"><a href="mailto:info.nouramagictouch@gmail.com">info.nouramagictouch@gmail.com</a></span>
       </div>
-      <div class="contact-item">
-        <span class="contact-label">Service</span>
-        <span class="contact-value">Home visits · Abu Dhabi</span>
+      <div class="c-item">
+        <span class="c-label">Service Area</span>
+        <span class="c-value">Abu Dhabi, UAE</span>
       </div>
-      <div class="contact-item">
-        <span class="contact-label">Location</span>
-        <span class="contact-value">Abu Dhabi, UAE</span>
+      <div class="c-item">
+        <span class="c-label">Home Visits</span>
+        <span class="c-value">By appointment</span>
       </div>
     </div>
   </div>
@@ -956,51 +939,40 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Noura's <span>Magic Touch</span></div>
+  <div class="footer-logo">
+    <img src="https://res.cloudinary.com/dcuswyfur/image/upload/v1775160092/Beige_Aesthetic_Minimalist_Beauty_Logo_kpizzo.png" alt="Noura's Magic Touch" width="260" height="64" loading="lazy" decoding="async">
+  </div>
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#services">Treatments</a></li>
+    <li><a href="#menu">Pricing</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." target="_blank" rel="noopener noreferrer">Book Now</a></li>
   </ul>
-  <div class="footer-divider"></div>
-  <p class="footer-copy">© 2024–2026 Noura's Magic Touch. Home service · Abu Dhabi, UAE. All rights reserved.</p>
+  <p class="footer-copy">© 2024–2026 Noura's Magic Touch · Abu Dhabi, UAE</p>
 </footer>
-
-<a href="https://wa.me/971506052433?text=Hi%20Noura%2C%20I%27d%20like%20to%20book%20a%20session." class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
 
 <script>
   // Pricing tabs
-  const tabs = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.pricing-panel');
-  tabs.forEach(btn => {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     });
   });
 
-  // Fade-in on scroll
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  fadeEls.forEach(el => observer.observe(el));
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Nav shrink on scroll
+  // Nav shrink
   window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.padding =
-      window.scrollY > 60 ? '14px 60px' : '22px 60px';
+    document.getElementById('navbar').style.padding =
+      window.scrollY > 80 ? '10px 64px' : '16px 64px';
   });
 </script>
 </body>
