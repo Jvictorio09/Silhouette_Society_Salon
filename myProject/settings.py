@@ -33,7 +33,13 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'silhouettesocietysalon-production.up.railway.app']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'silhouettesocietysalon-production.up.railway.app',
+    'nourasmagictouch.me',
+    'www.nourasmagictouch.me',
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost',
@@ -41,6 +47,10 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
     'http://127.0.0.1:8000',
     'https://silhouettesocietysalon-production.up.railway.app',
+    'http://nourasmagictouch.me',
+    'https://nourasmagictouch.me',
+    'http://www.nourasmagictouch.me',
+    'https://www.nourasmagictouch.me',
 ]
 
 # Application definition
