@@ -76,6 +76,9 @@ def _send_booking_email(booking: SpaBooking) -> bool:
     if not settings.RESEND_API_KEY or not settings.RESEND_FROM or not settings.BOOKING_ALERT_EMAIL:
         return False
 
+    recipients = [settings.BOOKING_ALERT_EMAIL, "info.nouramagictouch@gmail.com"]
+    recipients = list(dict.fromkeys([email for email in recipients if email]))
+
     preferred_time = booking.preferred_time.strftime("%H:%M") if booking.preferred_time else "Not specified"
     message = booking.message if booking.message else "No special request."
 
@@ -94,7 +97,7 @@ def _send_booking_email(booking: SpaBooking) -> bool:
 
     payload = {
         "from": settings.RESEND_FROM,
-        "to": [settings.BOOKING_ALERT_EMAIL],
+        "to": recipients,
         "subject": "New Spa Booking Request",
         "html": html,
     }
